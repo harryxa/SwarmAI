@@ -13,6 +13,10 @@
 #include <directxmath.h>
 using namespace DirectX;
 
+//fstram library, to handle reading from the model text file
+#include <fstream>
+using namespace std;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: ModelClass
@@ -27,12 +31,19 @@ private:
 		XMFLOAT4 color;
 	};
 
+	struct ModelType
+	{
+		float x, y, z;
+		float a, b, c, d;
+		
+	};
+
 public:
 	ModelClass();
 	ModelClass(const ModelClass&);
 	~ModelClass();
 
-	bool Initialize(ID3D11Device*);
+	bool Initialize(ID3D11Device*, char*);
 	void Shutdown();
 	void Render(ID3D11DeviceContext*);
 
@@ -43,9 +54,14 @@ private:
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext*);
 
+	bool LoadModel(char*);
+	void ReleaseModel();
+
 private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
+
+	ModelType* m_model;
 };
 
 #endif

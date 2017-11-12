@@ -168,6 +168,9 @@
     <None Include="Color.ps" />
     <None Include="Color.vs" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Cube.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

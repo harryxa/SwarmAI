@@ -13,8 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Shaders">
+    <Filter Include="Shaders">
       <UniqueIdentifier>{4457ba29-121d-4953-b48a-8969a6868ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{dc38f71a-e410-4544-99bb-f82008a3030a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,10 +71,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Color.vs">
-      <Filter>Source Files\Shaders</Filter>
+      <Filter>Shaders</Filter>
     </None>
     <None Include="Color.ps">
-      <Filter>Source Files\Shaders</Filter>
+      <Filter>Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Cube.txt">
+      <Filter>Models</Filter>
+    </Text>
   </ItemGroup>
 </Project>

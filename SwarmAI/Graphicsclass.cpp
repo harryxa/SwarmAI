@@ -50,8 +50,11 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		return false;
 	}
 
-	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -5.0f);
+	// Set the initial position and rotation of the camera.
+	m_Camera->SetPosition(-4.0f, 5.0f, -5.0f);
+
+	//up&down/left&right/rotate
+	m_Camera->SetRotation(45.0f, 45.0f, 0.0f);
 
 	// Create the model object.
 	m_Model = new ModelClass;
@@ -61,7 +64,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model->Initialize(m_Direct3D->GetDevice());
+	result = m_Model->Initialize(m_Direct3D->GetDevice(), "../SwarmAI/cube.txt");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
