@@ -142,6 +142,11 @@ bool GraphicsClass::Frame()
 	return true;
 }
 
+CameraClass * GraphicsClass::GetCamera()
+{
+	return m_Camera;
+}
+
 
 bool GraphicsClass::Render()
 {

@@ -130,6 +130,54 @@ bool SystemClass::Frame()
 	{
 		return false;
 	}
+	if (m_Input->IsKeyDown(VK_UP))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetPosition().x;
+		float y = cam->GetPosition().y + 0.1f;
+		float z = cam->GetPosition().z;
+		cam->SetPosition(x, y, z);
+	}
+	if (m_Input->IsKeyDown(VK_DOWN))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetPosition().x;
+		float y = cam->GetPosition().y - 0.1f;
+		float z = cam->GetPosition().z;
+		cam->SetPosition(x, y, z);
+	}
+	if (m_Input->IsKeyDown(VK_LEFT))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetPosition().x - 0.1f;
+		float y = cam->GetPosition().y;
+		float z = cam->GetPosition().z;
+		cam->SetPosition(x, y, z);
+	}
+	if (m_Input->IsKeyDown(VK_RIGHT))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetPosition().x + 0.1f;
+		float y = cam->GetPosition().y;
+		float z = cam->GetPosition().z;
+		cam->SetPosition(x, y, z);
+	}
+	if (m_Input->IsKeyDown(VK_NUMPAD1))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetRotation().x;
+		float y = cam->GetRotation().y - 0.5f;
+		float z = cam->GetRotation().z;
+		cam->SetRotation(x, y, z);
+	}
+	if (m_Input->IsKeyDown(VK_NUMPAD3))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetRotation().x;
+		float y = cam->GetRotation().y + 0.5f;
+		float z = cam->GetRotation().z;
+		cam->SetRotation(x, y, z);
+	}
 
 	// Do the frame processing for the graphics object.
 	result = m_Graphics->Frame();
