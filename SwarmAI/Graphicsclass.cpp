@@ -1,8 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: graphicsclass.cpp
-////////////////////////////////////////////////////////////////////////////////
 #include "Graphicsclass.h"
-
 
 GraphicsClass::GraphicsClass()
 {
@@ -12,21 +8,17 @@ GraphicsClass::GraphicsClass()
 	m_ColorShader = 0;
 }
 
-
 GraphicsClass::GraphicsClass(const GraphicsClass& other)
 {
 }
-
 
 GraphicsClass::~GraphicsClass()
 {
 }
 
-
 bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 {
 	bool result;
-
 
 	// Create the Direct3D object.
 	m_Direct3D = new D3DClass;
@@ -51,10 +43,10 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position and rotation of the camera.
-	m_Camera->SetPosition(-4.0f, 5.0f, -5.0f);
+	m_Camera->SetPosition(0.0f, 0.0f, -10.0f);
 
 	//up&down/left&right/rotate
-	m_Camera->SetRotation(45.0f, 45.0f, 0.0f);
+	m_Camera->SetRotation(0.0f, 0.0f, 0.0f);
 
 	// Create the model object.
 	m_Model = new ModelClass;
@@ -64,7 +56,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Initialize the model object.
-	result = m_Model->Initialize(m_Direct3D->GetDevice(), "../SwarmAI/cube.txt");
+	result = m_Model->Initialize(m_Direct3D->GetDevice(), "../SwarmAI/Triangle.txt");
 	if (!result)
 	{
 		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
@@ -131,7 +123,6 @@ bool GraphicsClass::Frame()
 {
 	bool result;
 
-
 	// Render the graphics scene.
 	result = Render();
 	if (!result)
@@ -152,7 +143,6 @@ bool GraphicsClass::Render()
 {
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
-
 
 	// Clear the buffers to begin the scene.
 	m_Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);

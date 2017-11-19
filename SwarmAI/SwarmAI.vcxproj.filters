@@ -45,6 +45,9 @@
     <ClCompile Include="Cameraclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Systemclass.h">
@@ -68,6 +71,9 @@
     <ClInclude Include="Cameraclass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Color.vs">
@@ -79,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cube.txt">
+      <Filter>Models</Filter>
+    </Text>
+    <Text Include="Triangle.txt">
       <Filter>Models</Filter>
     </Text>
   </ItemGroup>

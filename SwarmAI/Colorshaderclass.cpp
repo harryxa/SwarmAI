@@ -1,7 +1,4 @@
 
-////////////////////////////////////////////////////////////////////////////////
-// Filename: colorshaderclass.cpp
-////////////////////////////////////////////////////////////////////////////////
 #include "colorshaderclass.h"
 
 ColorShaderClass::ColorShaderClass()
@@ -49,7 +46,6 @@ bool ColorShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount
 	XMMATRIX projectionMatrix)
 {
 	bool result;
-
 
 	// Set the shader parameters that it will use for rendering.
 	result = SetShaderParameters(deviceContext, worldMatrix, viewMatrix, projectionMatrix);

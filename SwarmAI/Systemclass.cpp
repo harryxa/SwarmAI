@@ -7,6 +7,7 @@ SystemClass::SystemClass()
 {
 	m_Input = 0;
 	m_Graphics = 0;
+//	m_GameObject = 0;
 }
 
 SystemClass::SystemClass(const SystemClass& other)
@@ -54,6 +55,8 @@ bool SystemClass::Initialize()
 		return false;
 	}
 
+	m_GameObject = new GameObject;
+	m_GameObject->Init();
 	return true;
 }
 
@@ -83,7 +86,8 @@ void SystemClass::Shutdown()
 void SystemClass::Run()
 {
 	MSG msg;
-	bool done, result;
+	bool done;
+	bool result;
 
 
 	// Initialize the message structure.
@@ -181,6 +185,7 @@ bool SystemClass::Frame()
 
 	// Do the frame processing for the graphics object.
 	result = m_Graphics->Frame();
+
 	if (!result)
 	{
 		return false;
