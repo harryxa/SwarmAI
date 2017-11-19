@@ -51,23 +51,35 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position and rotation of the camera.
-	m_Camera->SetPosition(-4.0f, 5.0f, -5.0f);
+	m_Camera->SetPosition(0.0f, 0.0f, -5.0f);
 
 	//up&down/left&right/rotate
-	m_Camera->SetRotation(45.0f, 45.0f, 0.0f);
+	m_Camera->SetRotation(0.0f, 0.0f, 0.0f);
 
 	// Create the model object.
-	m_Model = new ModelClass;
-	if (!m_Model)
+	//m_Model = new ModelClass;
+	//if (!m_Model)
+	//{
+	//	return false;
+	//}
+
+	// Initialize the model object.
+	//result = m_Model->Initialize(m_Direct3D->GetDevice(), "../SwarmAI/triangle.txt");
+	//if (!result)
+	//{
+	//	MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
+	//	return false;
+	//}
+
+	//init gameobject
+	m_GameObject = new GameObject;
+	if (!m_GameObject)
 	{
 		return false;
 	}
-
-	// Initialize the model object.
-	result = m_Model->Initialize(m_Direct3D->GetDevice(), "../SwarmAI/cube.txt");
+	result = m_GameObject->Init(m_Direct3D->GetDevice());
 	if (!result)
 	{
-		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
 		return false;
 	}
 
@@ -166,10 +178,11 @@ bool GraphicsClass::Render()
 	m_Direct3D->GetProjectionMatrix(projectionMatrix);
 
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	m_Model->Render(m_Direct3D->GetDeviceContext());
+	m_GameObject->Render(m_Direct3D->GetDeviceContext());
 
+	
 	// Render the model using the color shader.
-	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_GameObject->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
 	if (!result)
 	{
 		return false;

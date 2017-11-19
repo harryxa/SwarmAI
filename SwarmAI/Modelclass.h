@@ -1,14 +1,8 @@
 #pragma once
-////////////////////////////////////////////////////////////////////////////////
-// Filename: modelclass.h
-////////////////////////////////////////////////////////////////////////////////
+
 #ifndef _MODELCLASS_H_
 #define _MODELCLASS_H_
 
-
-//////////////
-// INCLUDES //
-//////////////
 #include <d3d11.h>
 #include <directxmath.h>
 using namespace DirectX;
@@ -17,10 +11,6 @@ using namespace DirectX;
 #include <fstream>
 using namespace std;
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Class name: ModelClass
-////////////////////////////////////////////////////////////////////////////////
 class ModelClass
 {
 private:
@@ -57,11 +47,11 @@ private:
 	bool LoadModel(char*);
 	void ReleaseModel();
 
-private:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 
 	ModelType* m_model;
+	
 };
 
 #endif

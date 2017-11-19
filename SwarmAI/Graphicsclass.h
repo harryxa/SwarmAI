@@ -1,30 +1,19 @@
 #pragma once
-///////////////////////////////////////////////////////////////////////////////
-// Filename: graphicsclass.h
-////////////////////////////////////////////////////////////////////////////////
+
 #ifndef _GRAPHICSCLASS_H_
 #define _GRAPHICSCLASS_H_
 
-
-//////////////
-// INCLUDES //
-//////////////
 #include "D3dclass.h"
 #include "cameraclass.h"
 #include "modelclass.h"
 #include "colorshaderclass.h"
+#include "GameObject.h"
 
-/////////////
-// GLOBALS //
-/////////////
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
 const float SCREEN_NEAR = 0.1f;
 
-////////////////////////////////////////////////////////////////////////////////
-// Class name: GraphicsClass
-////////////////////////////////////////////////////////////////////////////////
 class GraphicsClass
 {
 public:
@@ -46,6 +35,8 @@ private:
 	CameraClass* m_Camera;
 	ModelClass* m_Model;
 	ColorShaderClass* m_ColorShader;
+	GameObject* m_GameObject;
+	
 
 };
 

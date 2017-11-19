@@ -149,6 +149,7 @@
     <ClCompile Include="Cameraclass.cpp" />
     <ClCompile Include="Colorshaderclass.cpp" />
     <ClCompile Include="D3dclass.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphicsclass.cpp" />
     <ClCompile Include="Inputclass.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Cameraclass.h" />
     <ClInclude Include="Colorshaderclass.h" />
     <ClInclude Include="D3dclass.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphicsclass.h" />
     <ClInclude Include="Inputclass.h" />
     <ClInclude Include="Modelclass.h" />
@@ -170,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cube.txt" />
+    <Text Include="triangle.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
