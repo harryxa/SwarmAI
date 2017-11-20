@@ -25,11 +25,10 @@ public:
 	void Shutdown();
 	bool Frame();
 	CameraClass* GetCamera();
+	
 
 private:
-	bool Render();
-
-private:
+	bool Render(float rotation);
 
 	D3DClass* m_Direct3D;
 	CameraClass* m_Camera;

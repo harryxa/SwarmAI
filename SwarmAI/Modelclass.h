@@ -38,9 +38,10 @@ public:
 	void Render(ID3D11DeviceContext*);
 
 	int GetIndexCount();
+	bool InitializeBuffers(ID3D11Device*, int y);
 
 private:
-	bool InitializeBuffers(ID3D11Device*);
+	
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext*);
 

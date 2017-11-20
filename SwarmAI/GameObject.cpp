@@ -3,6 +3,7 @@
 GameObject::GameObject()
 {
 	m_triangle = 0;
+	y = 0;
 }
 
 GameObject::~GameObject()
@@ -18,7 +19,7 @@ bool GameObject::Init(ID3D11Device* device)
 	{
 		return false;
 	}
-	result = m_triangle->Initialize(device, "../SwarmAI/triangle.txt");
+	result = m_triangle->Initialize(device, "../SwarmAI/cube.txt");
 	
 	if (!result)
 	{
@@ -38,8 +39,12 @@ void GameObject::ShutDown()
 }
 
 
-bool GameObject::Render(ID3D11DeviceContext* deviceContext)
+bool GameObject::Render(ID3D11DeviceContext* deviceContext, ID3D11Device* device)
 {
+	
+	y = y + 0.01f;
+
+	m_triangle->InitializeBuffers(device, y);
 	m_triangle->Render(deviceContext);
 	return true;
 }
@@ -48,5 +53,7 @@ int GameObject::GetIndexCount()
 {
 	return m_triangle->GetIndexCount();
 }
+
+
 
 

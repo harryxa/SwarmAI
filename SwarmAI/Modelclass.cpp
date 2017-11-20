@@ -30,7 +30,7 @@ bool ModelClass::Initialize(ID3D11Device* device, char* modelFilename)
 	}
 
 	// Initialize the vertex and index buffers.
-	result = InitializeBuffers(device);
+	result = InitializeBuffers(device, 0);
 	if (!result)
 	{
 		return false;
@@ -62,7 +62,7 @@ int ModelClass::GetIndexCount()
 	return m_indexCount;
 }
 
-bool ModelClass::InitializeBuffers(ID3D11Device* device)
+bool ModelClass::InitializeBuffers(ID3D11Device* device, int y)
 {
 	VertexType* vertices;
 	unsigned long* indices;

@@ -1,6 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: systemclass.cpp
-////////////////////////////////////////////////////////////////////////////////
 #include "Systemclass.h"
 
 SystemClass::SystemClass()
@@ -13,10 +10,10 @@ SystemClass::SystemClass(const SystemClass& other)
 {
 }
 
-
 SystemClass::~SystemClass()
 {
 }
+
 bool SystemClass::Initialize()
 {
 	int screenWidth, screenHeight;
@@ -164,6 +161,7 @@ bool SystemClass::Frame()
 		float y = cam->GetPosition().y;
 		float z = cam->GetPosition().z;
 		cam->SetPosition(x, y, z);
+		
 	}
 	if (m_Input->IsKeyDown(VK_NUMPAD1))
 	{
