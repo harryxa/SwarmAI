@@ -56,21 +56,6 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	//up&down/left&right/rotate
 	m_Camera->SetRotation(0.0f, 0.0f, 0.0f);
 
-	// Create the model object.
-	//m_Model = new ModelClass;
-	//if (!m_Model)
-	//{
-	//	return false;
-	//}
-
-	// Initialize the model object.
-	//result = m_Model->Initialize(m_Direct3D->GetDevice(), "../SwarmAI/triangle.txt");
-	//if (!result)
-	//{
-	//	MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
-	//	return false;
-	//}
-
 	//init gameobject
 	m_GameObject = new GameObject;
 	if (!m_GameObject)
@@ -138,25 +123,10 @@ void GraphicsClass::Shutdown()
 	return;
 }
 
-
 bool GraphicsClass::Frame()
 {
-	bool result;
-	static float rotation = 0.0f;
-
 	// Update the rotation variable each frame.
-	rotation += (float)XM_PI * 0.01f;
-	if (rotation > 360.0f)
-	{
-		rotation -= 360.0f;
-	}
-	// Render the graphics scene.
-	result = Render(rotation);
-	if (!result)
-	{
-		return false;
-	}
-
+	Movement();
 	return true;
 }
 
@@ -165,13 +135,11 @@ CameraClass * GraphicsClass::GetCamera()
 	return m_Camera;
 }
 
-
-bool GraphicsClass::Render(float rotation)
+bool GraphicsClass::Render(float rotation, float mov)
 {
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
-
-
+	
 	// Clear the buffers to begin the scene.
 	m_Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -184,14 +152,12 @@ bool GraphicsClass::Render(float rotation)
 	m_Direct3D->GetProjectionMatrix(projectionMatrix);
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
-	worldMatrix = XMMatrixRotationY(rotation);
-
-
-
+	//worldMatrix = XMMatrixRotationY(rotation);
+	worldMatrix = XMMatrixTranslation(0, mov, 0) * XMMatrixRotationY(rotation);
+	
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	m_GameObject->Render(m_Direct3D->GetDeviceContext(), m_Direct3D->GetDevice());
-
-	
+		
 	// Render the model using the color shader.
 	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_GameObject->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
 	if (!result)
@@ -203,4 +169,27 @@ bool GraphicsClass::Render(float rotation)
 	m_Direct3D->EndScene();
 
 	return true;
+}
+
+
+bool GraphicsClass::Movement()
+{
+	bool result;
+	static float rotation = 0.0f;
+
+	rotation += (float)XM_PI * 0.01f;
+	if (rotation > 360.0f)
+	{
+		rotation -= 360.0f;
+	}	
+		
+	static float mov = 0.0f;
+
+	mov += (float)1 * 0.01f;
+	// Render the graphics scene.
+	result = Render(rotation, mov);
+	if (!result)
+	{
+		return false;
+	}
 }

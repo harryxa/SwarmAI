@@ -87,6 +87,7 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device, int y)
 	// Load the vertex array and index array with data.
 	for (int i = 0; i<m_vertexCount; i++)
 	{
+		//+y here moves direction, not sure if broken
 		vertices[i].position = XMFLOAT3(m_model[i].x, m_model[i].y, m_model[i].z);
 		vertices[i].color = XMFLOAT4(m_model[i].a, m_model[i].b, m_model[i].c, m_model[i].d);
 
