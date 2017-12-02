@@ -21,12 +21,11 @@ private:
 		XMFLOAT4 color;
 	};
 
-	struct ModelType
-	{
-		float x, y, z;
-		float a, b, c, d;
-		
-	};
+	//struct ModelType
+	//{
+	//	float x, y, z;
+	//	float a, b, c, d;		
+	//};
 
 public:
 	ModelClass();
@@ -45,13 +44,13 @@ private:
 	void ShutdownBuffers();
 	void RenderBuffers(ID3D11DeviceContext*);
 
-	bool LoadModel(char*);
-	void ReleaseModel();
+	//bool LoadModel(char*);
+	//void ReleaseModel();
 
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
 	int m_vertexCount, m_indexCount;
 
-	ModelType* m_model;
+	//ModelType* m_model;
 	
 };
 

@@ -177,7 +177,7 @@ bool GraphicsClass::Movement()
 	bool result;
 	static float rotation = 0.0f;
 
-	rotation += (float)XM_PI * 0.01f;
+	rotation += (float)XM_PI * 0.00f;
 	if (rotation > 360.0f)
 	{
 		rotation -= 360.0f;
@@ -185,7 +185,7 @@ bool GraphicsClass::Movement()
 		
 	static float mov = 0.0f;
 
-	mov += (float)1 * 0.01f;
+	mov += (float)1 * 0.00f;
 	// Render the graphics scene.
 	result = Render(rotation, mov);
 	if (!result)
