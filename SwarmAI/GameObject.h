@@ -12,7 +12,7 @@ public:
 	void ShutDown();
 	bool Render(ID3D11DeviceContext* deviceContext, ID3D11Device* device);
 
-	int GetIndexCount();
+	
 
 	float y;
 

@@ -30,7 +30,7 @@ public:
 private:
 	bool Render(float rotation, float mov);
 
-	bool Movement();
+	//bool Movement();
 
 	D3DClass* m_Direct3D;
 	CameraClass* m_Camera;

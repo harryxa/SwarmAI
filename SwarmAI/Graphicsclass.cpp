@@ -126,7 +126,7 @@ void GraphicsClass::Shutdown()
 bool GraphicsClass::Frame()
 {
 	// Update the rotation variable each frame.
-	Movement();
+	//Movement();
 	return true;
 }
 
@@ -153,13 +153,13 @@ bool GraphicsClass::Render(float rotation, float mov)
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
 	//worldMatrix = XMMatrixRotationY(rotation);
-	worldMatrix = XMMatrixTranslation(0, mov, 0) * XMMatrixRotationY(rotation);
+//	worldMatrix = XMMatrixTranslation(0, mov, 0) * XMMatrixRotationY(rotation);
 	
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	m_GameObject->Render(m_Direct3D->GetDeviceContext(), m_Direct3D->GetDevice());
 		
 	// Render the model using the color shader.
-	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_GameObject->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_Model->GetVertexCount(), m_Model->GetInstanceCount(), worldMatrix, viewMatrix, projectionMatrix);
 	if (!result)
 	{
 		return false;
@@ -172,24 +172,24 @@ bool GraphicsClass::Render(float rotation, float mov)
 }
 
 
-bool GraphicsClass::Movement()
-{
-	bool result;
-	static float rotation = 0.0f;
-
-	rotation += (float)XM_PI * 0.01f;
-	if (rotation > 360.0f)
-	{
-		rotation -= 360.0f;
-	}	
-		
-	static float mov = 0.0f;
-
-	mov += (float)1 * 0.01f;
-	// Render the graphics scene.
-	result = Render(rotation, mov);
-	if (!result)
-	{
-		return false;
-	}
-}
+//bool GraphicsClass::Movement()
+//{
+//	bool result;
+//	static float rotation = 0.0f;
+//
+//	rotation += (float)XM_PI * 0.01f;
+//	if (rotation > 360.0f)
+//	{
+//		rotation -= 360.0f;
+//	}	
+//		
+//	static float mov = 0.0f;
+//
+//	mov += (float)1 * 0.01f;
+//	// Render the graphics scene.
+//	result = Render(rotation, mov);
+//	if (!result)
+//	{
+//		return false;
+//	}
+//}
