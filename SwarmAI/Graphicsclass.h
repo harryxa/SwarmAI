@@ -3,11 +3,20 @@
 #ifndef _GRAPHICSCLASS_H_
 #define _GRAPHICSCLASS_H_
 
+<<<<<<< HEAD
 #include "D3dclass.h"
 #include "cameraclass.h"
 #include "modelclass.h"
 #include "colorshaderclass.h"
 #include "GameObject.h"
+=======
+
+//////////////
+// INCLUDES //
+//////////////
+#include "d3dclass.h"
+
+>>>>>>> parent of f43c36f... triangle rendering
 
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
@@ -33,11 +42,14 @@ private:
 	bool Movement();
 
 	D3DClass* m_Direct3D;
+<<<<<<< HEAD
 	CameraClass* m_Camera;
 	ModelClass* m_Model;
 	ColorShaderClass* m_ColorShader;
 	GameObject* m_GameObject;
 	
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 
 };
 

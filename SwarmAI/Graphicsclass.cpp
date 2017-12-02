@@ -1,15 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: graphicsclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "Graphicsclass.h"
+#include "graphicsclass.h"
 
 
 GraphicsClass::GraphicsClass()
 {
 	m_Direct3D = 0;
-	m_Camera = 0;
-	m_Model = 0;
-	m_ColorShader = 0;
 }
 
 
@@ -43,6 +40,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		return false;
 	}
 
+<<<<<<< HEAD
 	// Create the camera object.
 	m_Camera = new CameraClass;
 	if (!m_Camera)
@@ -83,35 +81,14 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		return false;
 	}
 
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 	return true;
 }
 
 
 void GraphicsClass::Shutdown()
 {
-
-	// Release the color shader object.
-	if (m_ColorShader)
-	{
-		m_ColorShader->Shutdown();
-		delete m_ColorShader;
-		m_ColorShader = 0;
-	}
-
-	// Release the model object.
-	if (m_Model)
-	{
-		m_Model->Shutdown();
-		delete m_Model;
-		m_Model = 0;
-	}
-
-	// Release the camera object.
-	if (m_Camera)
-	{
-		delete m_Camera;
-		m_Camera = 0;
-	}
 	// Release the Direct3D object.
 	if (m_Direct3D)
 	{
@@ -137,6 +114,7 @@ CameraClass * GraphicsClass::GetCamera()
 
 bool GraphicsClass::Render(float rotation, float mov)
 {
+<<<<<<< HEAD
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
 	
@@ -164,6 +142,10 @@ bool GraphicsClass::Render(float rotation, float mov)
 	{
 		return false;
 	}
+=======
+	// Clear the buffers to begin the scene.
+	m_Direct3D->BeginScene(0.5f, 0.5f, 0.5f, 1.0f);
+>>>>>>> parent of f43c36f... triangle rendering
 
 	// Present the rendered scene to the screen.
 	m_Direct3D->EndScene();

@@ -13,12 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="Shaders">
       <UniqueIdentifier>{4457ba29-121d-4953-b48a-8969a6868ee6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Models">
       <UniqueIdentifier>{dc38f71a-e410-4544-99bb-f82008a3030a}</UniqueIdentifier>
     </Filter>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -36,6 +39,7 @@
     <ClCompile Include="D3dclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Colorshaderclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -48,6 +52,8 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Systemclass.h">
@@ -62,6 +68,7 @@
     <ClInclude Include="D3dclass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Colorshaderclass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -82,6 +89,8 @@
     <None Include="Color.ps">
       <Filter>Shaders</Filter>
     </None>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
   </ItemGroup>
   <ItemGroup>
     <Text Include="Cube.txt">
