@@ -41,6 +41,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	// Create the camera object.
 	m_Camera = new CameraClass;
 	if (!m_Camera)
@@ -83,6 +84,8 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 
 =======
 >>>>>>> parent of f43c36f... triangle rendering
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 	return true;
 }
 
@@ -115,6 +118,7 @@ CameraClass * GraphicsClass::GetCamera()
 bool GraphicsClass::Render(float rotation, float mov)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
 	
@@ -142,6 +146,10 @@ bool GraphicsClass::Render(float rotation, float mov)
 	{
 		return false;
 	}
+=======
+	// Clear the buffers to begin the scene.
+	m_Direct3D->BeginScene(0.5f, 0.5f, 0.5f, 1.0f);
+>>>>>>> parent of f43c36f... triangle rendering
 =======
 	// Clear the buffers to begin the scene.
 	m_Direct3D->BeginScene(0.5f, 0.5f, 0.5f, 1.0f);

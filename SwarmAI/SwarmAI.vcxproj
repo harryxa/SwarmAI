@@ -161,6 +161,7 @@
     <ClInclude Include="Systemclass.h" />
   </ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <ItemGroup>
     <None Include="Color.ps" />
     <None Include="Color.vs" />
@@ -169,6 +170,8 @@
     <Text Include="Cube.txt" />
     <Text Include="triangle.txt" />
   </ItemGroup>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 =======
 >>>>>>> parent of f43c36f... triangle rendering
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

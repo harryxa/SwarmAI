@@ -4,18 +4,24 @@
 #define _GRAPHICSCLASS_H_
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "D3dclass.h"
 #include "cameraclass.h"
 #include "modelclass.h"
 #include "colorshaderclass.h"
 #include "GameObject.h"
 =======
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 
 //////////////
 // INCLUDES //
 //////////////
 #include "d3dclass.h"
 
+<<<<<<< HEAD
+>>>>>>> parent of f43c36f... triangle rendering
+=======
 >>>>>>> parent of f43c36f... triangle rendering
 
 const bool FULL_SCREEN = false;
@@ -43,11 +49,14 @@ private:
 
 	D3DClass* m_Direct3D;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	CameraClass* m_Camera;
 	ModelClass* m_Model;
 	ColorShaderClass* m_ColorShader;
 	GameObject* m_GameObject;
 	
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 =======
 >>>>>>> parent of f43c36f... triangle rendering
 

@@ -5,6 +5,9 @@
 // Filename: systemclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
 #include "systemclass.h"
+<<<<<<< HEAD
+>>>>>>> parent of f43c36f... triangle rendering
+=======
 >>>>>>> parent of f43c36f... triangle rendering
 
 SystemClass::SystemClass()

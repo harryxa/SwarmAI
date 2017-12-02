@@ -14,12 +14,15 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Filter Include="Shaders">
       <UniqueIdentifier>{4457ba29-121d-4953-b48a-8969a6868ee6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Models">
       <UniqueIdentifier>{dc38f71a-e410-4544-99bb-f82008a3030a}</UniqueIdentifier>
     </Filter>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 =======
 >>>>>>> parent of f43c36f... triangle rendering
   </ItemGroup>
@@ -40,6 +43,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="Colorshaderclass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,6 +56,8 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
 =======
 >>>>>>> parent of f43c36f... triangle rendering
   </ItemGroup>
@@ -68,6 +74,7 @@
     <ClInclude Include="D3dclass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <ClInclude Include="Colorshaderclass.h">
       <Filter>Header Files</Filter>
@@ -99,5 +106,7 @@
     <Text Include="triangle.txt">
       <Filter>Models</Filter>
     </Text>
+=======
+>>>>>>> parent of f43c36f... triangle rendering
   </ItemGroup>
 </Project>
