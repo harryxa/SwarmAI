@@ -163,11 +163,29 @@ bool SystemClass::Frame()
 		cam->SetPosition(x, y, z);
 		
 	}
+	if (m_Input->IsKeyDown('E'))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetPosition().x ;
+		float y = cam->GetPosition().y;
+		float z = cam->GetPosition().z + 0.2f;
+		cam->SetPosition(x, y, z);
+
+	}
+	if (m_Input->IsKeyDown('Q'))
+	{
+		CameraClass* cam = m_Graphics->GetCamera();
+		float x = cam->GetPosition().x;
+		float y = cam->GetPosition().y;
+		float z = cam->GetPosition().z - 0.2f;
+		cam->SetPosition(x, y, z);
+
+	}
 	if (m_Input->IsKeyDown(VK_NUMPAD1))
 	{
 		CameraClass* cam = m_Graphics->GetCamera();
 		float x = cam->GetRotation().x;
-		float y = cam->GetRotation().y - 0.5f;
+		float y = cam->GetRotation().y - 5.0f;
 		float z = cam->GetRotation().z;
 		cam->SetRotation(x, y, z);
 	}
@@ -175,7 +193,7 @@ bool SystemClass::Frame()
 	{
 		CameraClass* cam = m_Graphics->GetCamera();
 		float x = cam->GetRotation().x;
-		float y = cam->GetRotation().y + 0.5f;
+		float y = cam->GetRotation().y + 5.0f;
 		float z = cam->GetRotation().z;
 		cam->SetRotation(x, y, z);
 	}

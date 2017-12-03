@@ -5,11 +5,14 @@
 
 #include <d3d11.h>
 #include <directxmath.h>
+#include <vector>
 using namespace DirectX;
 
 //fstram library, to handle reading from the model text file
 #include <fstream>
 using namespace std;
+class GameObject;
+
 
 class ModelClass
 {
@@ -40,12 +43,12 @@ public:
 	bool Initialize(ID3D11Device*, char*);
 	void Shutdown();
 	void Render(ID3D11DeviceContext*);
-
+	void updatePositions(ID3D11DeviceContext*, std::vector<GameObject*>&);
 	int GetVertexCount();
 	int GetInstanceCount();
 
 	int GetIndexCount();
-	bool InitializeBuffers(ID3D11Device*, int y);
+	bool InitializeBuffers(ID3D11Device*, int row, int col);
 
 private:
 	

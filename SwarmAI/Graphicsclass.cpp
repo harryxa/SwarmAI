@@ -76,7 +76,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		posX += 1;
 	}
 
-
+	m_Model = new ModelClass;
 	m_Model->InitializeBuffers(m_Direct3D->GetDevice(), row, col);
 
 	// Create the color shader object.
@@ -109,6 +109,12 @@ void GraphicsClass::Shutdown()
 		m_ColorShader = 0;
 	}
 
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		delete m_gameObjects[i];
+		m_gameObjects[i] = 0;
+	}
+
 	// Release the model object.
 	if (m_Model)
 	{
@@ -138,7 +144,21 @@ bool GraphicsClass::Frame()
 {
 	// Update the rotation variable each frame.
 	Movement();
+	Tick();
 	return true;
+}
+
+void GraphicsClass::Tick()
+{
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->Tick();
+	}
+
+	m_Model->updatePositions(m_Direct3D->GetDeviceContext(), m_gameObjects);
+
+
+
 }
 
 CameraClass * GraphicsClass::GetCamera()
@@ -168,9 +188,9 @@ bool GraphicsClass::Render(float rotation, float mov)
 	
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	//m_GameObject->Render(m_Direct3D->GetDeviceContext(), m_Direct3D->GetDevice());
-		
+	m_Model->Render(m_Direct3D->GetDeviceContext());
 	// Render the model using the color shader.
-	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_GameObject->getModel()->GetVertexCount(), m_GameObject->getModel()->GetInstanceCount(), worldMatrix, viewMatrix, projectionMatrix);
+	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_Model->GetVertexCount(), m_Model->GetInstanceCount(), worldMatrix, viewMatrix, projectionMatrix);
 	if (!result)
 	{
 		return false;

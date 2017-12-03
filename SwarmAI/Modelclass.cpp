@@ -1,5 +1,5 @@
 #include "modelclass.h"
-
+#include "GameObject.h"
 ModelClass::ModelClass()
 {
 	m_vertexBuffer = 0;
@@ -31,11 +31,8 @@ bool ModelClass::Initialize(ID3D11Device* device, char* modelFilename)
 	//}
 
 	// Initialize the vertex and index buffers.
-	result = InitializeBuffers(device, 0);
-	if (!result)
-	{
-		return false;
-	}
+	//result = InitializeBuffers(device, 0);
+
 
 	return true;
 }
@@ -58,6 +55,24 @@ void ModelClass::Render(ID3D11DeviceContext* deviceContext)
 	return;
 }
 
+void ModelClass::updatePositions(ID3D11DeviceContext * deviceContext, std::vector<GameObject*>& objs)
+{
+	D3D11_MAPPED_SUBRESOURCE mappedResource;
+
+	deviceContext->Map(m_instanceBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+
+	InstanceType* instancePosition = reinterpret_cast<InstanceType*>(mappedResource.pData);
+
+	for (int i = 0; i < objs.size(); i++)
+	{
+		instancePosition[i].position = objs[i]->getPos();
+	}
+
+	deviceContext->Unmap(m_instanceBuffer, 0);
+
+
+}
+
 int ModelClass::GetVertexCount()
 {
 	return m_vertexCount;
@@ -74,7 +89,7 @@ int ModelClass::GetIndexCount()
 	return m_indexCount;
 }
 
-bool ModelClass::InitializeBuffers(ID3D11Device* device, int y)
+bool ModelClass::InitializeBuffers(ID3D11Device* device, int row, int col)
 {
 	VertexType* vertices;
 	InstanceType* instances;
@@ -173,7 +188,7 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device, int y)
 	vertices = 0;
 
 	// Set the number of instances in the array.
-	m_instanceCount = 4;
+	m_instanceCount = row * col;
 
 	// Create the instance array.
 	instances = new InstanceType[m_instanceCount];
@@ -182,17 +197,30 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device, int y)
 		return false;
 	}
 
-	// Load the instance array with data.
-	instances[0].position = XMFLOAT3(-1.5f, -1.5f, 5.0f);
-	instances[1].position = XMFLOAT3(-1.5f, 1.5f, 5.0f);
-	instances[2].position = XMFLOAT3(1.5f, -1.5f, 5.0f);
-	instances[3].position = XMFLOAT3(1.5f, 1.5f, 5.0f);
+
+	int posX = 0;
+	int posY = 0;
+
+
+
+	for (int r = 0; r < row; r++)
+	{
+		for (int c = 0; c < col; c++)
+		{
+			instances[r + c * row].position = XMFLOAT3(posX, posY, 0);
+			posY += 1;
+		}
+		posY = 0;
+		posX += 1;
+	}
+
+
 
 	// Set up the description of the instance buffer.
-	instanceBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	instanceBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 	instanceBufferDesc.ByteWidth = sizeof(InstanceType) * m_instanceCount;
 	instanceBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	instanceBufferDesc.CPUAccessFlags = 0;
+	instanceBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	instanceBufferDesc.MiscFlags = 0;
 	instanceBufferDesc.StructureByteStride = 0;
 

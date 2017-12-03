@@ -25,6 +25,7 @@ public:
 	bool Initialize(int, int, HWND);
 	void Shutdown();
 	bool Frame();
+	void Tick();
 	CameraClass* GetCamera();
 	
 
