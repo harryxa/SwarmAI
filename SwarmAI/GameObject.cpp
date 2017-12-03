@@ -49,6 +49,11 @@ bool GameObject::Render(ID3D11DeviceContext* deviceContext, ID3D11Device* device
 	return true;
 }
 
+ModelClass* GameObject::getModel()
+{
+	return m_triangle;
+}
+
 int GameObject::GetIndexCount()
 {
 	return m_triangle->GetIndexCount();

@@ -159,7 +159,7 @@ bool GraphicsClass::Render(float rotation, float mov)
 	m_GameObject->Render(m_Direct3D->GetDeviceContext(), m_Direct3D->GetDevice());
 		
 	// Render the model using the color shader.
-	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_GameObject->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+	result = m_ColorShader->Render(m_Direct3D->GetDeviceContext(), m_GameObject->getModel()->GetVertexCount(), m_GameObject->getModel()->GetInstanceCount(), worldMatrix, viewMatrix, projectionMatrix);
 	if (!result)
 	{
 		return false;

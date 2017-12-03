@@ -11,7 +11,7 @@ public:
 	bool Init(ID3D11Device* device);
 	void ShutDown();
 	bool Render(ID3D11DeviceContext* deviceContext, ID3D11Device* device);
-
+	ModelClass* getModel();
 	int GetIndexCount();
 
 	float y;

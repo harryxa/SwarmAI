@@ -27,6 +27,11 @@ private:
 	//	float a, b, c, d;		
 	//};
 
+	struct InstanceType
+	{
+		XMFLOAT3 position;
+	};
+
 public:
 	ModelClass();
 	ModelClass(const ModelClass&);
@@ -35,6 +40,9 @@ public:
 	bool Initialize(ID3D11Device*, char*);
 	void Shutdown();
 	void Render(ID3D11DeviceContext*);
+
+	int GetVertexCount();
+	int GetInstanceCount();
 
 	int GetIndexCount();
 	bool InitializeBuffers(ID3D11Device*, int y);
@@ -47,8 +55,13 @@ private:
 	//bool LoadModel(char*);
 	//void ReleaseModel();
 
-	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
-	int m_vertexCount, m_indexCount;
+	ID3D11Buffer *m_vertexBuffer;
+	ID3D11Buffer* m_instanceBuffer; 
+	ID3D11Buffer *m_indexBuffer;
+
+	int m_vertexCount;
+	int m_indexCount;
+	int m_instanceCount;
 
 	//ModelType* m_model;
 	
