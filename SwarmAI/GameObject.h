@@ -2,6 +2,9 @@
 #include "D3dclass.h"
 #include "Modelclass.h"
 
+#include <directxmath.h>
+using namespace DirextX;
+
 class GameObject
 {
 public:
@@ -14,10 +17,14 @@ public:
 	ModelClass* getModel();
 	int GetIndexCount();
 
+	void SetPos(float x, float y, float z);
+	XMFLOAT3 getPos();
+
 	float y;
 
 private:
 	ModelClass* m_triangle;
+	XMFLOAT3 m_pos;
 
 
 };

@@ -8,6 +8,7 @@
 #include "modelclass.h"
 #include "colorshaderclass.h"
 #include "GameObject.h"
+#include <vector>
 
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
@@ -36,7 +37,7 @@ private:
 	CameraClass* m_Camera;
 	ModelClass* m_Model;
 	ColorShaderClass* m_ColorShader;
-	GameObject* m_GameObject;
+	std::vector<GameObject*> m_gameObjects;
 	
 
 };
