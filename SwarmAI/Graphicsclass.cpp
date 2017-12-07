@@ -70,10 +70,10 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 			obj = new GameObject();
 			obj->SetPos(posX, posY, 0.0f);
 			m_gameObjects.push_back(obj);
-			posY += 1;
+			posY += 2;
 		}
 		posY = 0;
-		posX += 1;
+		posX += 2;
 	}
 
 	m_Model = new ModelClass;
@@ -96,7 +96,6 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 
 	return true;
 }
-
 
 void GraphicsClass::Shutdown()
 {
@@ -142,10 +141,17 @@ void GraphicsClass::Shutdown()
 
 bool GraphicsClass::Frame()
 {
+	bool result;
 	// Update the rotation variable each frame.
-	Movement();
+	//Movement();
 	Tick();
-	return true;
+
+	result = Render();
+	if (!result)
+	{
+		return false;
+	}
+	//return true;
 }
 
 void GraphicsClass::Tick()
@@ -153,12 +159,10 @@ void GraphicsClass::Tick()
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->Tick();
+
+		//m_gameObjects[0]->SetPos(0, 0, 0);
 	}
-
 	m_Model->updatePositions(m_Direct3D->GetDeviceContext(), m_gameObjects);
-
-
-
 }
 
 CameraClass * GraphicsClass::GetCamera()
@@ -166,7 +170,7 @@ CameraClass * GraphicsClass::GetCamera()
 	return m_Camera;
 }
 
-bool GraphicsClass::Render(float rotation, float mov)
+bool GraphicsClass::Render()
 {
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
@@ -184,7 +188,7 @@ bool GraphicsClass::Render(float rotation, float mov)
 
 	// Rotate the world matrix by the rotation value so that the triangle will spin.
 	//worldMatrix = XMMatrixRotationY(rotation);
-	worldMatrix = XMMatrixTranslation(0, mov, 0) * XMMatrixRotationY(rotation);
+	//worldMatrix = XMMatrixTranslation(0, mov, 0) * XMMatrixRotationY(rotation);
 	
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	//m_GameObject->Render(m_Direct3D->GetDeviceContext(), m_Direct3D->GetDevice());
@@ -203,24 +207,20 @@ bool GraphicsClass::Render(float rotation, float mov)
 }
 
 
-bool GraphicsClass::Movement()
-{
-	bool result;
-	static float rotation = 0.0f;
-
-	rotation += (float)XM_PI * 0.00f;
-	if (rotation > 360.0f)
-	{
-		rotation -= 360.0f;
-	}	
-		
-	static float mov = 0.0f;
-
-	mov += (float)1 * 0.00f;
-	// Render the graphics scene.
-	result = Render(rotation, mov);
-	if (!result)
-	{
-		return false;
-	}
-}
+//bool GraphicsClass::Movement()
+//{
+//	bool result;
+//	//static float rotation = 0.0f;
+//
+//	//rotation += (float)XM_PI * 0.00f;
+//	//if (rotation > 360.0f)
+//	//{
+//	//	rotation -= 360.0f;
+//	//}	
+//	//	
+//	//static float mov = 0.0f;
+//
+//	//mov += (float)1 * 0.00f;
+//	//// Render the graphics scene.
+//	return true;
+//}

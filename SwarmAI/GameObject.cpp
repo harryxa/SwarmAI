@@ -2,7 +2,6 @@
 
 GameObject::GameObject()
 {
-	//m_triangle = 0;
 	y = 0;
 }
 
@@ -13,29 +12,12 @@ GameObject::~GameObject()
 bool GameObject::Init(ID3D11Device* device)
 {
 	bool result;
-
-	//m_triangle = new ModelClass;
-	//if (!m_triangle)
-	//{
-	//	return false;
-	//}
-	//result = m_triangle->Initialize(device, "../SwarmAI/cube.txt");
-	//
-	//if (!result)
-	//{
-	//	return false;
-	//}
 	return true;
 }
 
 void GameObject::ShutDown()
 {
-	//if (m_triangle)
-	//{
-	//	m_triangle->Shutdown();
-	//	delete m_triangle;
-	//	m_triangle = 0;
-	//}
+	
 }
 
 void GameObject::SetPos(float x, float y, float z)
@@ -48,23 +30,15 @@ XMFLOAT3 GameObject::getPos()
 	return m_pos;
 }
 
-
 bool GameObject::Render(ID3D11DeviceContext* deviceContext, ID3D11Device* device)
 {
-	
-
 	return true;
 }
 
-
-
-
-
 void GameObject::Tick()
 {
-
-
 	m_pos.x += 0.05;
+	//m_pos.y += 0.05;
 }
 
 
