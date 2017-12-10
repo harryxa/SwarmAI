@@ -51,7 +51,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Set the initial position and rotation of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -5.0f);
+	m_Camera->SetPosition(8.0f, 8.0f, -25.0f);
 
 	//up&down/left&right/rotate
 	m_Camera->SetRotation(0.0f, 0.0f, 0.0f);
@@ -60,9 +60,10 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	int posX = 0;
 	int posY = 0;
 
-	int row = 100;
-	int col = 100;
+	int row = 10;
+	int col = 10;
 
+	//init gameobjects and offsets positions
 	for (int r = 0; r < row; r++)
 	{
 		for (int c = 0; c < col; c++)
@@ -142,16 +143,14 @@ void GraphicsClass::Shutdown()
 bool GraphicsClass::Frame()
 {
 	bool result;
-	// Update the rotation variable each frame.
-	//Movement();
+		
 	Tick();
 
 	result = Render();
 	if (!result)
 	{
 		return false;
-	}
-	//return true;
+	}	
 }
 
 void GraphicsClass::Tick()
@@ -160,7 +159,7 @@ void GraphicsClass::Tick()
 	{
 		m_gameObjects[i]->Tick();
 
-		//m_gameObjects[0]->SetPos(0, 0, 0);
+		
 	}
 	m_Model->updatePositions(m_Direct3D->GetDeviceContext(), m_gameObjects);
 }
@@ -207,20 +206,3 @@ bool GraphicsClass::Render()
 }
 
 
-//bool GraphicsClass::Movement()
-//{
-//	bool result;
-//	//static float rotation = 0.0f;
-//
-//	//rotation += (float)XM_PI * 0.00f;
-//	//if (rotation > 360.0f)
-//	//{
-//	//	rotation -= 360.0f;
-//	//}	
-//	//	
-//	//static float mov = 0.0f;
-//
-//	//mov += (float)1 * 0.00f;
-//	//// Render the graphics scene.
-//	return true;
-//}
