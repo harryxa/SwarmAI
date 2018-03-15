@@ -22,7 +22,7 @@ public:
 	GraphicsClass(const GraphicsClass&);
 	~GraphicsClass();
 
-	bool Initialize(int, int, HWND);
+	bool Initialize(int, int, HWND, int);
 	void Shutdown();
 	bool Frame();
 	void Tick();

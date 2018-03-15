@@ -23,7 +23,7 @@ GraphicsClass::~GraphicsClass()
 }
 
 
-bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
+bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, int GameObjectCount)
 {
 	bool result;
 
@@ -60,8 +60,8 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	int posX = 0;
 	int posY = 0;
 
-	int row = 10;
-	int col = 10;
+	int row = 100;
+	int col = 100;
 
 	//init gameobjects and offsets positions
 	for (int r = 0; r < row; r++)
@@ -71,10 +71,10 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 			obj = new GameObject();
 			obj->SetPos(posX, posY, 0.0f);
 			m_gameObjects.push_back(obj);
-			posY += 2;
+			posY += 4;
 		}
 		posY = 0;
-		posX += 2;
+		posX += 4;
 	}
 
 	m_Model = new ModelClass;
