@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include <time.h>
 
 GameObject::GameObject()
 {
@@ -11,6 +12,7 @@ GameObject::~GameObject()
 bool GameObject::Init(ID3D11Device* device)
 {
 	bool result;
+	srand(time(NULL));
 	return true;
 }
 
@@ -29,19 +31,26 @@ void GameObject::Tick()
 	//m_pos.x += 0.05;
 	//m_pos.y += 0.05;
 
-	SetVel(Destination());	
+	SetVel(Destination());
 
 	MovePos(m_vel);
 	
 }
 
+//sets target
 XMFLOAT3 GameObject::Move()
 {
-	XMFLOAT3 centre = XMFLOAT3(0, 0, 0);
+	int maxDouble = 500;
+	int maxHalf = maxDouble / 2;
+
+	//XMFLOAT3 centre = XMFLOAT3((rand()% maxDouble) - maxHalf, (rand()% maxDouble) - maxHalf, 0);
+	XMFLOAT3 dest = XMFLOAT3(0, 0, 0);
+
+	//XMFLOAT3 move = XMFLOAT3((rand() % maxDouble) - maxHalf, (rand() % maxDouble) - maxHalf, 0);
 	XMFLOAT3 move = XMFLOAT3(0,0,0);
 
-	move.x = (centre.x - m_pos.x);	
-	move.y = (centre.y - m_pos.y);
+	move.x = (dest.x - m_pos.x);	
+	move.y = (dest.y - m_pos.y);
 	
 	return move;	
 }
@@ -50,10 +59,10 @@ XMFLOAT3 GameObject::Destination()
 {
 	XMFLOAT3 dest = XMFLOAT3(0, 0, 0);;
 
-	dest.x = (m_vel.x + Move().x) * 0.0005;
+	dest.x = (m_vel.x + Move().x) * 0.01;
 	m_vel.x = dest.x;
 
-	dest.y = (m_vel.y + Move().y) * 0.0005;
+	dest.y = (m_vel.y + Move().y) * 0.01;
 	m_vel.y = dest.y;
 
 	return dest;

@@ -214,8 +214,6 @@ bool ModelClass::InitializeBuffers(ID3D11Device* device, int row, int col)
 		posX += 1;
 	}
 
-
-
 	// Set up the description of the instance buffer.
 	instanceBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
 	instanceBufferDesc.ByteWidth = sizeof(InstanceType) * m_instanceCount;

@@ -1,5 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: graphicsclass.cpp
+
+//The graphics class is the other object that is created by the system class. 
+//All the graphics functionality in this application will be encapsulated in this class. 
+
 ////////////////////////////////////////////////////////////////////////////////
 #include "Graphicsclass.h"
 
@@ -12,11 +16,9 @@ GraphicsClass::GraphicsClass()
 	m_ColorShader = 0;
 }
 
-
 GraphicsClass::GraphicsClass(const GraphicsClass& other)
 {
 }
-
 
 GraphicsClass::~GraphicsClass()
 {
@@ -26,7 +28,6 @@ GraphicsClass::~GraphicsClass()
 bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, int GameObjectCount)
 {
 	bool result;
-
 
 	// Create the Direct3D object.
 	m_Direct3D = new D3DClass;
@@ -60,8 +61,8 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, int
 	int posX = 0;
 	int posY = 0;
 
-	int row = 100;
-	int col = 100;
+	int row = 1;
+	int col = 1;
 
 	//init gameobjects and offsets positions
 	for (int r = 0; r < row; r++)
@@ -100,7 +101,6 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, int
 
 void GraphicsClass::Shutdown()
 {
-
 	// Release the color shader object.
 	if (m_ColorShader)
 	{

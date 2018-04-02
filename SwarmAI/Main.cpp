@@ -1,5 +1,13 @@
 ////////////////////////////////////////////////////////////////////////////////
+
 // Filename: main.cpp
+
+//Create the system class and then initialise it.
+//If it initialises with no problems then we call the system class Run function.
+//The Run function will run its own loop and do all the application code until it completes.
+//After the Run function finishes we then shut down the system object and do the clean up of the system object.
+//The entire application has been encapsulated inside the system class.
+
 ////////////////////////////////////////////////////////////////////////////////
 #include "Systemclass.h"
 

@@ -1,11 +1,18 @@
 #include "Systemclass.h"
 
+//In the class constructor the object pointers are initialliesed  to null. 
+//Important because if the initialisation of these objects fail then the Shutdown function further on will attempt to clean up those objects. 
+//If the objects are not null then it assumes they were valid created objects and that they need to be cleaned up.
 SystemClass::SystemClass()
 {
 	m_Input = 0;
 	m_Graphics = 0;
 }
 
+//Create an empty copy constructor and empty class destructor. 
+//If not defined some compilers will generate them, they should be empty so are defined here.
+//No object clean up in the class destructor. 
+//All object clean up in the Shutdown function further down. 
 SystemClass::SystemClass(const SystemClass& other)
 {
 }
@@ -14,12 +21,14 @@ SystemClass::~SystemClass()
 {
 }
 
+//Initialize function does all the setup for the application. 
+//It first calls InitializeWindows which creates the window for our application to use. 
+//It also creates and initializes both the input and graphics objects that the application will use for handling user input and rendering graphics to the screen.
 bool SystemClass::Initialize()
 {
 	int screenWidth, screenHeight;
 	bool result;
 	bool result2;
-
 
 	// Initialize the width and height of the screen to zero before sending the variables into the function.
 	screenWidth = 0;
@@ -52,11 +61,12 @@ bool SystemClass::Initialize()
 		return false;
 	}
 
-
-
 	return true;
 }
 
+//The Shutdown function does the clean up. 
+//It shuts down and releases everything associated with the graphics and input object. 
+//As well it also shuts down the window and cleans up the handles associated with it.
 void SystemClass::Shutdown()
 {
 	// Release the graphics object.
@@ -79,6 +89,15 @@ void SystemClass::Shutdown()
 
 	return;
 }
+//The Run function is where our application will loop and do all the application processing until we decide to quit. 
+//The application processing is done in the Frame function which is called each loop. 
+//This is an important concept to understand as now the rest of our application must be written with this in mind. The pseudo code looks like the following:
+
+//while not done
+	//check for windows system messages
+	//process system messages
+	//process application loop
+	//check if user wanted to quit during the frame processing
 
 void SystemClass::Run()
 {
@@ -114,16 +133,16 @@ void SystemClass::Run()
 				done = true;
 			}
 		}
-
 	}
-
 	return;
 }
 
+//The Frame function is where all the processing for our application is done. 
+//Check the input object to see if the user has pressed escape and wants to quit. 
+//If they don't want to quit then we call the graphics object to do its frame processing which will render the graphics for that frame. 
 bool SystemClass::Frame()
 {
 	bool result;
-
 
 	// Check if the user pressed escape and wants to exit the application.
 	if (m_Input->IsKeyDown(VK_ESCAPE))
@@ -179,7 +198,6 @@ bool SystemClass::Frame()
 		float y = cam->GetPosition().y;
 		float z = cam->GetPosition().z - 0.2f;
 		cam->SetPosition(x, y, z);
-
 	}
 	if (m_Input->IsKeyDown(VK_NUMPAD1))
 	{
@@ -208,34 +226,45 @@ bool SystemClass::Frame()
 	return true;
 }
 
+//The MessageHandler function is where we direct the windows system messages into. 
+//This way we can listen for certain information that we are interested in. 
+//Currently we will just read if a key is pressed or if a key is released and pass that information on to the input object. 
+//All other information we will pass back to the windows default message handler.
 LRESULT CALLBACK SystemClass::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)
 {
 	switch (umsg)
 	{
 		// Check if a key has been pressed on the keyboard.
-	case WM_KEYDOWN:
-	{
-		// If a key is pressed send it to the input object so it can record that state.
-		m_Input->KeyDown((unsigned int)wparam);
-		return 0;
-	}
+		case WM_KEYDOWN:
+		{
+			// If a key is pressed send it to the input object so it can record that state.
+			m_Input->KeyDown((unsigned int)wparam);
+			return 0;
+		}
 
-	// Check if a key has been released on the keyboard.
-	case WM_KEYUP:
-	{
-		// If a key is released then send it to the input object so it can unset the state for that key.
-		m_Input->KeyUp((unsigned int)wparam);
-		return 0;
-	}
+		// Check if a key has been released on the keyboard.
+		case WM_KEYUP:
+		{
+			// If a key is released then send it to the input object so it can unset the state for that key.
+			m_Input->KeyUp((unsigned int)wparam);
+			return 0;
+		}
 
-	// Any other messages send to the default message handler as our application won't make use of them.
-	default:
-	{
-		return DefWindowProc(hwnd, umsg, wparam, lparam);
-	}
+		// Any other messages send to the default message handler as our application won't make use of them.
+		default:
+		{
+			return DefWindowProc(hwnd, umsg, wparam, lparam);
+		}
 	}
 }
 
+//The InitializeWindows function is where the window is built. It's used to render to. 
+//It returns screenWidth and screenHeight back to the calling function so it can use them throughout.
+//Create window using default settings to initialize a plain black window with no borders. 
+//Makes a small window or full screen window depending on variable called FULL_SCREEN. 
+//If true then screen covers the entire users desktop window. 
+//If false make a 800x600 window in the middle of the screen. 
+//The FULL_SCREEN global variable at the top of the graphicsclass.h file in case of modifiaction. 
 void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 {
 	WNDCLASSEX wc;
@@ -317,6 +346,7 @@ void SystemClass::InitializeWindows(int& screenWidth, int& screenHeight)
 	return;
 }
 
+//Returns the screen settings back to normal and releases the window and the handles associated with it.
 void SystemClass::ShutdownWindows()
 {
 	// Show the mouse cursor.
