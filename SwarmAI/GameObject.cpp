@@ -40,11 +40,11 @@ void GameObject::Tick()
 //sets target
 XMFLOAT3 GameObject::Move()
 {
-	int maxDouble = 500;
+	int maxDouble = 800;
 	int maxHalf = maxDouble / 2;
 
-	//XMFLOAT3 centre = XMFLOAT3((rand()% maxDouble) - maxHalf, (rand()% maxDouble) - maxHalf, 0);
-	XMFLOAT3 dest = XMFLOAT3(0, 0, 0);
+	XMFLOAT3 dest = XMFLOAT3((rand()% maxDouble) - maxHalf, (rand()% maxDouble) - maxHalf, 0);
+	//XMFLOAT3 dest = XMFLOAT3(0, 0, 0);
 
 	//XMFLOAT3 move = XMFLOAT3((rand() % maxDouble) - maxHalf, (rand() % maxDouble) - maxHalf, 0);
 	XMFLOAT3 move = XMFLOAT3(0,0,0);
@@ -59,10 +59,10 @@ XMFLOAT3 GameObject::Destination()
 {
 	XMFLOAT3 dest = XMFLOAT3(0, 0, 0);;
 
-	dest.x = (m_vel.x + Move().x) * 0.01;
+	dest.x = (m_vel.x + Move().x) * 0.001;
 	m_vel.x = dest.x;
 
-	dest.y = (m_vel.y + Move().y) * 0.01;
+	dest.y = (m_vel.y + Move().y) * 0.001;
 	m_vel.y = dest.y;
 
 	return dest;

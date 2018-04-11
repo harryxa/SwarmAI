@@ -52,7 +52,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, int
 	}
 
 	// Set the initial position and rotation of the camera.
-	m_Camera->SetPosition(8.0f, 8.0f, -25.0f);
+	m_Camera->SetPosition(110.0f, 90.0f, -300.0f);
 
 	//up&down/left&right/rotate
 	m_Camera->SetRotation(0.0f, 0.0f, 0.0f);
@@ -61,8 +61,8 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, int
 	int posX = 0;
 	int posY = 0;
 
-	int row = 1;
-	int col = 1;
+	int row = 100;
+	int col = 100;
 
 	//init gameobjects and offsets positions
 	for (int r = 0; r < row; r++)
